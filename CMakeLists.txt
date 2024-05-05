@@ -10,4 +10,5 @@ add_executable(CS170Project1 main.cpp
         Tree.h
         Frontier.h
         frontiers/BreadthFirstSearch.h
-        frontiers/UniformCostSearch.h)
+        frontiers/UniformCostSearch.h
+        frontiers/AStarMisplacedTile.h)

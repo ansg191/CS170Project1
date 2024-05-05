@@ -12,6 +12,9 @@ class Frontier {
 public:
 	virtual ~Frontier() = default;
 
+	/// Initialize the frontier with the goal state if necessary
+	virtual void initialize(T goal) {}
+
 	/// Add a node to the frontier. Should silently ignore if the node is already in the frontier
 	virtual void pushNode(Node<T> *node) = 0;
 	/// Remove and return the top node from the frontier

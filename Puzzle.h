@@ -27,8 +27,8 @@ public:
 	 */
 	[[nodiscard]] std::vector<Puzzle<N>> availableMoves() const;
 
-	/// Returns the board state.
-	[[nodiscard]] uint8_t **getBoard() const { return board; }
+	/// Counts the number of misplaced tiles in the current board state compared to the goal state.
+	size_t countMisplacedTiles(const Puzzle<N> &goal) const;
 
 	bool operator==(const Puzzle<N> &other) const;
 
@@ -119,6 +119,23 @@ std::vector<Puzzle<N>> Puzzle<N>::availableMoves() const
 	}
 
 	return moves;
+}
+
+template<size_t N>
+size_t Puzzle<N>::countMisplacedTiles(const Puzzle<N> &goal) const
+{
+	size_t misplaced = 0;
+	for (size_t i = 0; i < N; i++) {
+		for (size_t j = 0; j < N; j++) {
+			uint8_t value = this->board[i][j];
+			// Skip the empty space
+			if (value == 0)
+				continue;
+			if (value != goal.board[i][j])
+				misplaced++;
+		}
+	}
+	return misplaced;
 }
 
 

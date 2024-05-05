@@ -10,6 +10,7 @@
 Node<Problem::State> *Problem::solve(Frontier<State> *frontier)
 {
 	std::vector<State> explored;
+	frontier->initialize(this->goal);
 	frontier->pushNode(this->tree.getRoot());
 
 	Node<State> *node;
