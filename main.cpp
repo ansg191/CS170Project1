@@ -3,6 +3,7 @@
 #include "Problem.h"
 #include "Puzzle.h"
 
+#include "frontiers/AStarEuclidean.h"
 #include "frontiers/AStarMisplacedTile.h"
 #include "frontiers/BreadthFirstSearch.h"
 #include "frontiers/UniformCostSearch.h"
@@ -60,6 +61,8 @@ std::unique_ptr<Frontier<Puzzle<3>>> requestAlgo()
 		return std::make_unique<UniformCostSearch<Puzzle<3>>>();
 	case 2:
 		return std::make_unique<AStarMisplacedTile<3>>();
+	case 3:
+		return std::make_unique<AStarEuclidean<3>>();
 	default:
 		std::cout << "Invalid input. Please try again." << std::endl;
 		return requestAlgo();

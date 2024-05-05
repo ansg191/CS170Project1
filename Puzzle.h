@@ -30,6 +30,9 @@ public:
 	/// Counts the number of misplaced tiles in the current board state compared to the goal state.
 	size_t countMisplacedTiles(const Puzzle<N> &goal) const;
 
+	/// Calculates the Euclidean distance of the current board state compared to the goal state.
+	double calcEuclidDist(const Puzzle<N> &goal) const;
+
 	bool operator==(const Puzzle<N> &other) const;
 
 	friend std::ostream &operator<<(std::ostream &os, const Puzzle<N> &puzzle)
@@ -136,6 +139,36 @@ size_t Puzzle<N>::countMisplacedTiles(const Puzzle<N> &goal) const
 		}
 	}
 	return misplaced;
+}
+
+template<size_t N>
+double Puzzle<N>::calcEuclidDist(const Puzzle<N> &goal) const
+{
+	// Mappings of tile values to their positions
+	std::pair<size_t, size_t> thisPos[N * N];
+	std::pair<size_t, size_t> goalPos[N * N];
+
+	// Fill in the mappings & skip the empty spaces
+	for (size_t i = 0; i < N; i++) {
+		for (size_t j = 0; j < N; j++) {
+			if (this->board[i][j])
+				thisPos[this->board[i][j]] = {i, j};
+			if (goal.board[i][j])
+				goalPos[goal.board[i][j]] = {i, j};
+		}
+	}
+
+	// Calculate the Euclidean distance
+	double totalDistance = 0.0;
+	for (size_t i = 1; i < N * N; i++) {
+		double x1 = thisPos[i].first;
+		double y1 = thisPos[i].second;
+		double x2 = goalPos[i].first;
+		double y2 = goalPos[i].second;
+		totalDistance += std::sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+	}
+
+	return totalDistance;
 }
 
 

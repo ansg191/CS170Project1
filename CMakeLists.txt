@@ -11,4 +11,5 @@ add_executable(CS170Project1 main.cpp
         Frontier.h
         frontiers/BreadthFirstSearch.h
         frontiers/UniformCostSearch.h
-        frontiers/AStarMisplacedTile.h)
+        frontiers/AStarMisplacedTile.h
+        frontiers/AStarEuclidean.h)
