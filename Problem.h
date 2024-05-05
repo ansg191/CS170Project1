@@ -23,9 +23,14 @@ public:
 	 */
 	Node<State> *solve(Frontier<State> *frontier);
 
+	[[nodiscard]] size_t getNumExpanded() const { return numExpanded; }
+
 private:
 	Tree<State> tree;
 	State goal;
+
+	/// Number of nodes expanded during the search
+	size_t numExpanded = 0;
 };
 
 #endif//CS170PROJECT1_PROBLEM_H

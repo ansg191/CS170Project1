@@ -24,6 +24,8 @@ template<class T>
 void BreadthFirstSearch<T>::pushNode(Node<T> *node)
 {
 	queue.push_back(node);
+	if (queue.size() > this->maxQueueSize)
+		this->maxQueueSize = queue.size();
 }
 
 template<class T>

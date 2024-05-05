@@ -19,6 +19,12 @@ public:
 
 	/// Check if the frontier contains a node with the given data
 	virtual bool contains(T data) const = 0;
+
+	/// Get the maximum number of nodes in the frontier queue at any given time
+	[[nodiscard]] size_t getMaxQueueSize() const { return maxQueueSize; }
+
+protected:
+	size_t maxQueueSize = 0;
 };
 
 #endif//CS170PROJECT1_FRONTIER_H

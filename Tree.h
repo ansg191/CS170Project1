@@ -60,6 +60,37 @@ struct Node {
 		this->children[this->numChildren++] = child;
 		return child;
 	}
+
+	/**
+	 * @brief Get the path from the current node to the root node.
+	 *
+	 * @tparam T The type of data stored in the node.
+	 * @return std::vector<T> The path from the current node to the root node.
+	 */
+	std::vector<T> getPath() const
+	{
+		std::vector<T> path;
+		const Node<T> *current = this;
+		while (current) {
+			path.push_back(current->data);
+			current = current->parent;
+		}
+		std::reverse(path.begin(), path.end());
+		return path;
+	}
+
+	/// Get the depth of the node in the tree
+	[[nodiscard]]
+	size_t getDepth() const
+	{
+		size_t depth = 0;
+		const Node<T> *current = this;
+		while (current) {
+			depth++;
+			current = current->parent;
+		}
+		return depth - 1;
+	}
 };
 
 /**

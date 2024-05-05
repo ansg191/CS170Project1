@@ -22,6 +22,7 @@ Node<Problem::State> *Problem::solve(Frontier<State> *frontier)
 		explored.push_back(node->data);
 
 		// Expand the node and add its children to the frontier
+		this->numExpanded++;
 		auto children = node->data.availableMoves();
 		for (auto child: children) {
 			// Check if the child is already explored or in the frontier
