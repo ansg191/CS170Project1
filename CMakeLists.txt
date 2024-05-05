@@ -9,4 +9,5 @@ add_executable(CS170Project1 main.cpp
         Puzzle.h
         Tree.h
         Frontier.h
-        frontiers/BreadthFirstSearch.h)
+        frontiers/BreadthFirstSearch.h
+        frontiers/UniformCostSearch.h)
