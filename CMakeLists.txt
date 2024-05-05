@@ -8,4 +8,5 @@ add_executable(CS170Project1 main.cpp
         Problem.h
         Puzzle.h
         Tree.h
-        Frontier.h)
+        Frontier.h
+        frontiers/BreadthFirstSearch.h)

@@ -5,9 +5,6 @@
 #ifndef CS170PROJECT1_PROBLEM_H
 #define CS170PROJECT1_PROBLEM_H
 
-#include <optional>
-#include <set>
-
 #include "Frontier.h"
 #include "Puzzle.h"
 #include "Tree.h"
@@ -19,7 +16,12 @@ public:
 
 	Problem(State init, State goal) : tree(init), goal(goal) {}
 
-	std::optional<State> solve(Frontier<State> *frontier);
+	/**
+	 * Solve the problem using the given frontier
+	 * @param frontier Frontier to use for solving the problem
+	 * @return Node containing the solution, or nullptr if no solution was found
+	 */
+	Node<State> *solve(Frontier<State> *frontier);
 
 private:
 	Tree<State> tree;
