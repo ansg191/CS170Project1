@@ -11,9 +11,9 @@
 Puzzle<3> requestInitState()
 {
 	constexpr uint8_t DEFAULT_INIT[3][3] = {
-	        {0, 2, 3},
-	        {1, 4, 5},
-	        {6, 7, 8}};
+	        {1, 0, 3},
+	        {4, 2, 6},
+	        {7, 5, 8}};
 
 	std::cout << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << std::endl;
 
