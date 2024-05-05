@@ -27,6 +27,11 @@ public:
 	 */
 	[[nodiscard]] std::vector<Puzzle<N>> availableMoves() const;
 
+	/// Returns the board state.
+	[[nodiscard]] uint8_t **getBoard() const { return board; }
+
+	bool operator==(const Puzzle<N> &other) const;
+
 	friend std::ostream &operator<<(std::ostream &os, const Puzzle<N> &puzzle)
 	{
 		for (size_t i = 0; i < N; i++) {
@@ -114,6 +119,19 @@ std::vector<Puzzle<N>> Puzzle<N>::availableMoves() const
 	}
 
 	return moves;
+}
+
+
+template<size_t N>
+bool Puzzle<N>::operator==(const Puzzle<N> &other) const
+{
+	for (size_t i = 0; i < N; i++) {
+		for (size_t j = 0; j < N; j++) {
+			if (board[i][j] != other.board[i][j])
+				return false;
+		}
+	}
+	return true;
 }
 
 
