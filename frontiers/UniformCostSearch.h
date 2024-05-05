@@ -9,6 +9,16 @@
 
 #include "../Frontier.h"
 
+/**
+ * @class UniformCostSearch
+ * @brief A class representing a frontier data structure for the Uniform Cost Search algorithm.
+ *
+ * This class implements the Frontier interface and provides a priority queue (min heap)
+ * implementation using a vector to store nodes. The nodes are ordered based on their cost
+ * (depth).
+ *
+ * @tparam T The type of the state stored in the nodes.
+ */
 template<class T>
 class UniformCostSearch : public Frontier<T> {
 public:
@@ -17,8 +27,11 @@ public:
 	bool contains(T data) const override;
 
 private:
+	/// Internal representation of a node in the min heap
 	struct NodeInternal {
+		/// Pointer to the node state
 		Node<T> *node;
+		/// Depth of the node
 		size_t depth;
 
 		explicit NodeInternal(Node<T> *n) : node(n), depth(n->getDepth()) {}
@@ -34,9 +47,11 @@ private:
 template<class T>
 void UniformCostSearch<T>::pushNode(Node<T> *node)
 {
+	// Insert the node into the min heap
 	queue.emplace_back(node);
 	std::push_heap(queue.begin(), queue.end(), std::greater<>());
 
+	// Update the max queue size statistic
 	if (queue.size() > this->maxQueueSize)
 		this->maxQueueSize = queue.size();
 }
@@ -47,6 +62,7 @@ Node<T> *UniformCostSearch<T>::popNode()
 	if (queue.empty())
 		return nullptr;
 
+	// Remove the node with the lowest cost
 	NodeInternal node = queue.front();
 	std::pop_heap(queue.begin(), queue.end(), std::greater<>());
 	queue.pop_back();

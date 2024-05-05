@@ -10,6 +10,15 @@
 #include "../Frontier.h"
 #include "../Puzzle.h"
 
+/**
+ * @class AStarEuclidean
+ * @brief A class representing an A* search algorithm implementation using the Euclidean distance heuristic.
+ *
+ * The A* algorithm uses a priority queue (min-heap) to prioritize nodes based on the sum of the depth of the
+* node and the Euclidean distance to the goal state.
+ *
+ * @tparam N The size of the puzzle board.
+ */
 template<size_t N>
 class AStarEuclidean : public Frontier<Puzzle<N>> {
 public:
@@ -21,9 +30,13 @@ public:
 	bool contains(Puzzle<N> data) const override;
 
 private:
+	/// Internal representation of a node in the min heap
 	struct NodeInternal {
+		/// Pointer to the node state
 		Node<Puzzle<N>> *node;
+		/// Depth of the node
 		size_t depth;
+		/// Euclidean distance to the goal state
 		double distance;
 
 		explicit NodeInternal(Node<Puzzle<N>> *n, double dist)
@@ -68,6 +81,7 @@ Node<Puzzle<N>> *AStarEuclidean<N>::popNode()
 	if (this->queue.empty())
 		return nullptr;
 
+	// Remove the node with the lowest cost
 	NodeInternal node = this->queue.front();
 	std::pop_heap(this->queue.begin(), this->queue.end(), std::greater<>());
 	this->queue.pop_back();

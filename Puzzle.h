@@ -18,13 +18,14 @@
 template<size_t N = 3>
 class Puzzle {
 public:
+	/**
+	 * @brief Constructs a puzzle board from a 2D array.
+	 *
+	 * Will throw an exception if the board is invalid.
+	 */
 	explicit Puzzle(const uint8_t board[N][N]);
 
-	/**
-	 * @brief Enumerates all possible board states via moves from the current board state.
-	 *
-	 * @return Vector of all possible board states.
-	 */
+	/// Enumerates all possible board states via moves from the current board state
 	[[nodiscard]] std::vector<Puzzle<N>> availableMoves() const;
 
 	/// Counts the number of misplaced tiles in the current board state compared to the goal state.

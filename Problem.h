@@ -23,10 +23,13 @@ public:
 	 */
 	Node<State> *solve(Frontier<State> *frontier);
 
+	/// Get the number of nodes expanded during the search
 	[[nodiscard]] size_t getNumExpanded() const { return numExpanded; }
 
 private:
+	/// Tree of all generated nodes
 	Tree<State> tree;
+	/// Goal state
 	State goal;
 
 	/// Number of nodes expanded during the search

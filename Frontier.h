@@ -7,6 +7,12 @@
 
 #include "Tree.h"
 
+/**
+ * @class Frontier
+ * @brief A generic interface for frontier data structures used in traversal algorithms.
+ *
+ * @tparam T The type of the state stored in the nodes.
+ */
 template<class T>
 class Frontier {
 public:

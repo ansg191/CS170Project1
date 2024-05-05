@@ -9,6 +9,14 @@
 
 #include "../Frontier.h"
 
+/**
+ * @class BreadthFirstSearch
+ * @brief A class that implements a breadth-first search algorithm
+ *
+ * Uses a FIFO queue to store nodes.
+ *
+ * @tparam T The type of the state stored in the nodes.
+ */
 template<class T>
 class BreadthFirstSearch : public Frontier<T> {
 public:
@@ -17,6 +25,7 @@ public:
 	bool contains(T data) const override;
 
 private:
+	/// FIFO queue of nodes
 	std::deque<Node<T> *> queue;
 };
 

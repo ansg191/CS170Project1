@@ -10,6 +10,20 @@
 #include "../Frontier.h"
 #include "../Puzzle.h"
 
+/**
+ * @class AStarMisplacedTile
+ * @brief A class that implements the A* search algorithm using the number of misplaced tiles as the heuristic.
+ *
+ * The A* algorithm uses a priority queue (min-heap) to prioritize nodes based on the sum of the depth of the
+ * node and the number of misplaced tiles.
+ *
+ * f(n) = g(n) + h(n)
+ * where g(n) is the depth of the node and h(n) is the number of misplaced tiles.
+ *
+ * @tparam N The size of the puzzle board.
+ *
+ * @see Frontier
+ */
 template<size_t N>
 class AStarMisplacedTile : public Frontier<Puzzle<N>> {
 public:
@@ -21,9 +35,13 @@ public:
 	bool contains(Puzzle<N> data) const override;
 
 private:
+	/// Internal representation of a node in the min heap
 	struct NodeInternal {
+		/// Pointer to the node state
 		Node<Puzzle<N>> *node;
+		/// Depth of the node
 		size_t depth;
+		/// Number of misplaced tiles
 		size_t misplacedTiles;
 
 		explicit NodeInternal(Node<Puzzle<N>> *n, size_t misplaced)
@@ -68,6 +86,7 @@ Node<Puzzle<N>> *AStarMisplacedTile<N>::popNode()
 	if (this->queue.empty())
 		return nullptr;
 
+	// Remove the node with the lowest cost
 	NodeInternal node = this->queue.front();
 	std::pop_heap(this->queue.begin(), this->queue.end(), std::greater<>());
 	this->queue.pop_back();

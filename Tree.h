@@ -89,6 +89,7 @@ struct Node {
 			depth++;
 			current = current->parent;
 		}
+		// Subtract 1 because the root node has depth 0
 		return depth - 1;
 	}
 };
