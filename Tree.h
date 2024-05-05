@@ -51,13 +51,14 @@ struct Node {
 	 * @brief Add a child node to the current node.
 	 * @param d The data to be stored in the child node.
 	 */
-	void addChild(T d)
+	Node<T> *addChild(T d)
 	{
 		if (this->numChildren >= 4)
 			throw std::runtime_error("Cannot add more than 4 children to a node");
 
 		auto *child = new Node<T>(d, this);
 		this->children[this->numChildren++] = child;
+		return child;
 	}
 };
 

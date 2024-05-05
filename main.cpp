@@ -1,3 +1,4 @@
+#include "Problem.h"
 #include "Puzzle.h"
 #include <iostream>
 
@@ -10,14 +11,7 @@ int main()
 	};
 	Puzzle<3> puzzle(board);
 
-	std::cout << "Hello, World!" << std::endl;
-
-	std::cout << puzzle << std::endl;
-
-	auto availableMoves = puzzle.availableMoves();
-	for (const auto &move : availableMoves) {
-		std::cout << move << std::endl;
-	}
+	Problem problem = Problem(puzzle, puzzle);
 
 	return 0;
 }

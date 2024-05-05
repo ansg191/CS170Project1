@@ -7,4 +7,5 @@ add_executable(CS170Project1 main.cpp
         Problem.cpp
         Problem.h
         Puzzle.h
-        Tree.h)
+        Tree.h
+        Frontier.h)
