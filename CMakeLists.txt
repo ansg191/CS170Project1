@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(CS170Project1 main.cpp
         Problem.cpp
         Problem.h
-        Puzzle.h)
+        Puzzle.h
+        Tree.h)
