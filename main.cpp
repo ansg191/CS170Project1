@@ -49,7 +49,7 @@ std::unique_ptr<Frontier<Puzzle<3>>> requestAlgo()
 	std::cout << "0. Breadth First Search" << std::endl;
 	std::cout << "1. Uniform Cost Search" << std::endl;
 	std::cout << "2. A* with the Misplaced Tile heuristic" << std::endl;
-	std::cout << "3. A* with the Manhattan distance heuristic" << std::endl;
+	std::cout << "3. A* with the Euclidean distance heuristic" << std::endl;
 
 	uint input;
 	std::cin >> input;
